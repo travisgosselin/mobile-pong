@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Pong Game";
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.signalR-1.0.0.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/signalr/hubs/?noext=1")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/game/game.js")"></script>
+}
+
+<div ng-app>
+    <div ng-controller="GameCtrl">
+        
+        <a name="game"></a>
+        <canvas id="game-area" ng-show="overview.Status && overview.Status != 0" height="{{ overview.Settings.GameHeight }}" width="{{ overview.Settings.GameWidth }}"></canvas>
+        <div ng-show="overview.Players.length == 0">
+            <input type="text" ng-model="username" placeholder="Enter your username" />
+            <div data-role="fieldcontain">
+ 	            <fieldset data-role="controlgroup">
+		            <input type="checkbox" name="checkbox-1" id="checkbox-1" ng-model="isPaddle"  data-theme="c" />
+		            <label for="checkbox-1">Control Paddle</label>
+                </fieldset>
+            </div>
+            <button ng-click="joinGame(username, isPaddle)" data-icon="check">Join</button>
+        </div>
+
+        <div ng-show="overview.Players.length > 0">
+            <h3>Players</h3>
+            <ul data-role="listview" data-inset="true" data-theme="a">
+                <li ng-repeat="player in overview.Players">
+                    {{ player.Name }}
+                    <span ng-show="player.IsPaddleController"> - Paddle</span>
+                    <span ng-show="!player.IsPaddleController"> - Ball</span>
+                    <span ng-show="!player.IsPaddleController"> - Goals: {{ player.Goals }}</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div ng-show="overview.Status == 0">
+            <h3>Waiting for more players...</h3>
+        </div>
+        
+        <div ng-show="isPaddle && overview.Status && overview.Status != 0"><button ng-click="Reset()">Reset Game</button></div>
+    </div>
+</div>
