@@ -8,5 +8,5 @@
     url: https://github.com/travisgosselin/mobile-pong/
     language: c#
     slack: #my-slack-channel
-    tier: Critical
+    tier: Mission Critical
   relations: {}
