@@ -1,6 +1,6 @@
 - identifier: mobile-pong
   title: Mobile Pong
-  team: []
+  team: ["My Team"]
   icon: DefaultBlueprint
   blueprint: service
   properties:
