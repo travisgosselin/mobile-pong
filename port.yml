@@ -1,5 +1,5 @@
-- identifier: some_identifier
-  title: mobile-pong
+- identifier: mobile-pong
+  title: Mobile Pong
   team: []
   icon: DefaultBlueprint
   blueprint: service
