@@ -1,0 +1,12 @@
+- identifier: some_identifier
+  title: mobile-pong
+  team: []
+  icon: DefaultBlueprint
+  blueprint: service
+  properties:
+    readme: README.md
+    url: https://github.com/travisgosselin/mobile-pong/
+    language: c#
+    slack: #my-slack-channel
+    tier: Critical
+  relations: {}
